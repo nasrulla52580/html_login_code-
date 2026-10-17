@@ -236,4 +236,31 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('پارولنى ئەسلىگە كەلتۈرۈش ئېلخېتىگە ئەۋەتىلىدۇ!', 'success');
     });
   }
+
+  // ======================================================
+  // 7. ئاپتوماتىك تولدۇرۇش (Autofill) ۋە لەيلىمە خەت ھالىتىنى تەكشۈرۈش
+  // ======================================================
+  const allInputs = document.querySelectorAll('.input-box input');
+  function syncInputState(input) {
+    const box = input.closest('.input-box');
+    if (!box) return;
+    if (input.value && input.value.trim() !== '') {
+      box.classList.add('has-value');
+    } else {
+      box.classList.remove('has-value');
+    }
+  }
+
+  allInputs.forEach(input => {
+    ['input', 'change', 'blur', 'focus', 'keyup'].forEach(ev => {
+      input.addEventListener(ev, () => syncInputState(input));
+    });
+  });
+
+  // براۋزېر پارول ۋە ئېلخەتنى ئاپتوماتىك ساقلاپ قويغاندا (Autofill) دەرھال لەيلىمە قىلىش
+  [50, 150, 300, 600, 1000, 2000].forEach(delay => {
+    setTimeout(() => {
+      allInputs.forEach(syncInputState);
+    }, delay);
+  });
 });

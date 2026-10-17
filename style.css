@@ -516,9 +516,11 @@ body {
   white-space: nowrap;
 }
 
-/* تاللانغاندا ياكى قىممەت كىرگۈزۈلگەندە سىزىقچە ئۈستىگە كۆتۈرۈلۈش (خەت ۋە چېكىتلەر تولۇق، ئېنىق چىقىدۇ) */
+/* تاللانغاندا، قىممەت كىرگۈزۈلگەندە ياكى ئاپتوماتىك تولدۇرۇلغاندا (Autofill) سىزىقچە ئۈستىگە كۆتۈرۈلۈش */
 .input-box input:focus ~ .floating-label,
-.input-box input:not(:placeholder-shown) ~ .floating-label {
+.input-box input:not(:placeholder-shown) ~ .floating-label,
+.input-box input:-webkit-autofill ~ .floating-label,
+.input-box.has-value .floating-label {
   top: 0;
   transform: translateY(-50%);
   font-size: 12px;
@@ -529,8 +531,10 @@ body {
   box-shadow: 0 1px 4px rgba(163, 177, 198, 0.35);
 }
 
-/* تاللانمىغان، ئەمما ئىچىدە خەت بار ۋاقىتتا سۇس تۇرۇش */
-.input-box input:not(:focus):not(:placeholder-shown) ~ .floating-label {
+/* تاللانمىغان، ئەمما ئىچىدە قىممەت بار ۋاقىتتا سۇس تۇرۇش */
+.input-box input:not(:focus):not(:placeholder-shown) ~ .floating-label,
+.input-box input:not(:focus):-webkit-autofill ~ .floating-label,
+.input-box.has-value:not(:focus-within) .floating-label {
   color: var(--text-muted);
 }
 
@@ -999,7 +1003,9 @@ body {
   }
 
   .input-box input:focus ~ .floating-label,
-  .input-box input:not(:placeholder-shown) ~ .floating-label {
+  .input-box input:not(:placeholder-shown) ~ .floating-label,
+  .input-box input:-webkit-autofill ~ .floating-label,
+  .input-box.has-value .floating-label {
     font-size: 11px;
   }
 
