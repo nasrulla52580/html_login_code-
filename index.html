@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كىرىش ۋە تىزىملىتىش كۆرۈنمە يۈزى | Modern Neumorphic UI</title>
+  <!-- Google Fonts: Noto Sans Arabic & Scheherazade New -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ئەتراپتىكى لەيلىمە Neumorphic بېزەك شارچىلار (Floating Circles) -->
+  <div class="bg-circle bg1"></div>
+  <div class="bg-circle bg2"></div>
+  <div class="bg-circle bg3"></div>
+
+  <!-- ئۇچۇر ئەسكەرتىش قەۋىتى (Toast Notification) -->
+  <div id="toast" class="toast">
+    <i class="toast-icon fas fa-check-circle"></i>
+    <span id="toastMsg" class="toast-text">ئۇچۇر</span>
+  </div>
+
+  <!-- 3D پىرقىراش قاچىسى (3D Perspective Container) -->
+  <div class="card-container">
+    <main class="auth-card" id="authCard">
+
+    <!-- كارتىچكا ئۈستۈنكى نىشان بەلگىسى (Brand Lock/Avatar) -->
+    <div class="card-header">
+      <div class="brand-icon-box">
+        <div class="brand-icon-inner">
+          <i class="fas fa-lock" id="mainHeaderIcon"></i>
+        </div>
+      </div>
+      <h1 class="header-title" id="formHeaderTitle">خوش كەپسىز</h1>
+      <p class="header-subtitle" id="formHeaderSubtitle">داۋاملاشتۇرۇش ئۈچۈن ھېساباتىڭىزغا كىرىڭ</p>
+    </div>
+
+    <!-- ئالماشتۇرغۇچ بەلۋاغ (Segmented Tab Switcher) -->
+    <div class="tab-switcher">
+      <div class="tab-slider" id="tabSlider"></div>
+      <button type="button" class="tab-btn active" id="loginTabBtn">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>كىرىش</span>
+      </button>
+      <button type="button" class="tab-btn" id="registerTabBtn">
+        <i class="fas fa-user-plus"></i>
+        <span>تىزىملىتىش</span>
+      </button>
+    </div>
+
+    <!-- جەدۋەللەر بۆلىكى (Forms Wrapper) -->
+    <div class="forms-wrapper">
+
+      <!-- ================= 1. كىرىش جەدۋىلى (Login Form) ================= -->
+      <form id="loginForm" class="form active" autocomplete="on">
+        
+        <!-- ئېلخەت / نامى -->
+        <div class="input-group">
+          <div class="input-box">
+            <span class="input-icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <input 
+              type="text" 
+              id="loginEmail" 
+              placeholder=" " 
+              required
+            >
+            <label class="floating-label" for="loginEmail">ئېلخەت ياكى ئىشلەتكۈچى نامى</label>
+          </div>
+        </div>
+
+        <!-- پارول -->
+        <div class="input-group">
+          <div class="input-box">
+            <span class="input-icon">
+              <i class="fas fa-lock"></i>
+            </span>
+            <input 
+              type="password" 
+              id="loginPassword" 
+              placeholder=" " 
+              required
+            >
+            <label class="floating-label" for="loginPassword">پارولىڭىزنى كىرگۈزۈڭ</label>
+            <button type="button" class="toggle-password" data-target="loginPassword" aria-label="پارولنى كۆرسىتىش ياكى يوشۇرۇش">
+              <i class="far fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- تاللاشلار: ئەستە تۇتۇش ۋە ئۇنتۇش -->
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe">
+            <span class="custom-checkbox"></span>
+            <span class="option-label">مېنى ئەستە تۇت</span>
+          </label>
+          <a href="#" class="forgot-link" id="forgotPasswordLink">پارولنى ئۇنتۇدىڭىزمۇ؟</a>
+        </div>
+
+        <!-- كىرىش كۇنۇپكىسى (Electric Cyan/Blue Gradient) -->
+        <button type="submit" class="submit-btn">
+          <span>كىرىش</span>
+          <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <!-- ئايرىغۇچ -->
+        <div class="divider">
+          <span>ياكى بۇلار بىلەن كىرىڭ</span>
+        </div>
+
+        <!-- ئىجتىمائىي ھېساباتلار -->
+        <div class="social-login">
+          <button type="button" class="social-btn" title="Google ئارقىلىق كىرىش" aria-label="Google">
+            <i class="fab fa-google"></i>
+          </button>
+          <button type="button" class="social-btn" title="Apple ئارقىلىق كىرىش" aria-label="Apple">
+            <i class="fab fa-apple"></i>
+          </button>
+          <button type="button" class="social-btn" title="GitHub ئارقىلىق كىرىش" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+
+        <!-- سىندىكى ئالاھىدە ئايلانما ئالماشتۇرۇش كۇنۇپكىسى (.switch-circle) -->
+        <div class="switch-prompt">
+          <span>ھېساباتىڭىز يوقمۇ؟</span>
+          <button type="button" class="switch-circle" id="switchCircleLogin" title="ھېسابات قۇرۇش">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- ================= 2. تىزىملىتىش جەدۋىلى (Register Form) ================= -->
+      <form id="registerForm" class="form" autocomplete="off">
+        
+        <!-- تولۇق ئىسىم -->
+        <div class="input-group">
+          <div class="input-box">
+            <span class="input-icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <input 
+              type="text" 
+              id="regName" 
+              placeholder=" " 
+              required
+            >
+            <label class="floating-label" for="regName">تولۇق ئىسمىڭىز</label>
+          </div>
+        </div>
+
+        <!-- ئېلخەت ئادرېسى -->
+        <div class="input-group">
+          <div class="input-box">
+            <span class="input-icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <input 
+              type="email" 
+              id="regEmail" 
+              placeholder=" " 
+              required
+            >
+            <label class="floating-label" for="regEmail">ئېلخەت ئادرېسىڭىز</label>
+          </div>
+        </div>
+
+        <!-- پارول بەلگىلەش -->
+        <div class="input-group">
+          <div class="input-box">
+            <span class="input-icon">
+              <i class="fas fa-key"></i>
+            </span>
+            <input 
+              type="password" 
+              id="regPassword" 
+              placeholder=" " 
+              required
+            >
+            <label class="floating-label" for="regPassword">يېڭى پارول (ئەڭ ئاز 6 خانە)</label>
+            <button type="button" class="toggle-password" data-target="regPassword" aria-label="پارولنى كۆرسىتىش ياكى يوشۇرۇش">
+              <i class="far fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- پارول جەزملەشتۈرۈش -->
+        <div class="input-group">
+          <div class="input-box">
+            <span class="input-icon">
+              <i class="fas fa-shield-alt"></i>
+            </span>
+            <input 
+              type="password" 
+              id="regConfirmPassword" 
+              placeholder=" " 
+              required
+            >
+            <label class="floating-label" for="regConfirmPassword">پارولنى قايتا جەزملەشتۈرۈڭ</label>
+            <button type="button" class="toggle-password" data-target="regConfirmPassword" aria-label="پارولنى كۆرسىتىش ياكى يوشۇرۇش">
+              <i class="far fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- كېلىشىم ۋە شەرتلەر -->
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="acceptTerms" required>
+            <span class="custom-checkbox"></span>
+            <span class="option-label">مۇلازىمەت ۋە بىخەتەرلىك شەرتلىرىگە قوشۇلىمەن</span>
+          </label>
+        </div>
+
+        <!-- تىزىملىتىش كۇنۇپكىسى -->
+        <button type="submit" class="submit-btn">
+          <span>ھېسابات قۇرۇش</span>
+          <i class="fas fa-user-check"></i>
+        </button>
+
+        <!-- ئايرىغۇچ -->
+        <div class="divider">
+          <span>ياكى بۇلار بىلەن تىزىملىتىڭ</span>
+        </div>
+
+        <!-- ئىجتىمائىي تەمىنلىگۈچىلەر -->
+        <div class="social-login">
+          <button type="button" class="social-btn" title="Google ئارقىلىق تىزىملىتىش" aria-label="Google">
+            <i class="fab fa-google"></i>
+          </button>
+          <button type="button" class="social-btn" title="Apple ئارقىلىق تىزىملىتىش" aria-label="Apple">
+            <i class="fab fa-apple"></i>
+          </button>
+          <button type="button" class="social-btn" title="GitHub ئارقىلىق تىزىملىتىش" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+
+        <!-- سىندىكى ئالاھىدە ئايلانما كىرىشكە قايتىش كۇنۇپكىسى -->
+        <div class="switch-prompt">
+          <span>ھېساباتىڭىز بارمۇ؟</span>
+          <button type="button" class="switch-circle" id="switchCircleReg" title="كىرىشكە قايتىش">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
